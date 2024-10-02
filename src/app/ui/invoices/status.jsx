@@ -9,7 +9,8 @@ export default function InvoiceStatus({ status }) {
         {
           'bg-gray-100 text-gray-500': status === 'pending',
           'bg-green-500 text-white': status === 'paid',
-        },
+          'bg-red-500 text-white': status === 'late',  
+        }
       )}
     >
       {status === 'pending' ? (
@@ -17,11 +18,15 @@ export default function InvoiceStatus({ status }) {
           Pending
           <ClockIcon className="ml-1 w-4 text-gray-500" />
         </>
-      ) : null}
-      {status === 'paid' ? (
+      ) : status === 'paid' ? (
         <>
           Paid
           <CheckIcon className="ml-1 w-4 text-white" />
+        </>
+      ) : status === 'late' ? (   
+        <>
+          Late
+          <ClockIcon className="ml-1 w-4 text-white" />
         </>
       ) : null}
     </span>
